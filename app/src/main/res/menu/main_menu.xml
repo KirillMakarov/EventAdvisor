@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_menu_feed"
+        android:icon="@drawable/ic_home_white_24dp"
+        android:title="@string/feed_title"/>
+
+    <item
+        android:id="@+id/main_menu_schedule"
+        android:icon="@drawable/ic_event_white_24dp"
+        android:title="@string/schedule_title"/>
+
+    <item
+        android:id="@+id/main_menu_settings"
+        android:icon="@drawable/ic_settings_white_24dp"
+        android:title="@string/settings_title"/>
+</menu>

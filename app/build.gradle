@@ -60,6 +60,8 @@ dependencies {
     compile 'com.squareup.sqlbrite:sqlbrite:0.6.3'
     compile 'com.android.support:design:24.1.1'
 
+    compile 'com.roughike:bottom-bar:1.4.0.1'
+
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

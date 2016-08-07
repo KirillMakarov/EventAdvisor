@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">EventAdvisor</string>
+    <string name="app_name">Event Advisor</string>
+    <string name="feed_title">Feed</string>
+    <string name="schedule_title">Schedule</string>
+    <string name="settings_title">Settings</string>
 </resources>
