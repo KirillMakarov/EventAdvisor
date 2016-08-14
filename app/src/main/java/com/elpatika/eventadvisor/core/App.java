@@ -1,7 +1,6 @@
 package com.elpatika.eventadvisor.core;
 
 import android.app.Application;
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.elpatika.eventadvisor.BuildConfig;
@@ -14,7 +13,7 @@ public class App extends Application {
     private AppComponent component;
 
     @NonNull
-    public static App get(@NonNull Context context) {
+    public static App get() {
         return (App) application;
     }
 

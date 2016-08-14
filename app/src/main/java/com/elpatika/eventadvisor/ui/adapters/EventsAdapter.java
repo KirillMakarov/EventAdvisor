@@ -4,11 +4,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.elpatika.eventadvisor.R;
+import com.elpatika.eventadvisor.core.App;
 import com.elpatika.eventadvisor.model.Event;
 import com.elpatika.eventadvisor.ui.presenters.EventFeedPresenter;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +45,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         @BindView(R.id.event_title)
         TextView eventTitle;
 
+        @BindView(R.id.event_image)
+        ImageView eventImage;
 
         EventViewHolder(View itemView) {
             super(itemView);
@@ -50,6 +55,10 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
         void setData(Event event) {
             eventTitle.setText(event.getTitle());
+            Picasso.with(App.get())
+                    .load(event.getImages().get(0).getThumbnails().getLarge())
+//                    .placeholder()
+                    .into(eventImage);
         }
     }
 }
