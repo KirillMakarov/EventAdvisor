@@ -7,12 +7,12 @@ import android.support.annotation.NonNull;
 public class App extends Application {
 
     private static App application;
+    private AppComponent component;
 
     @NonNull
     public static App get(@NonNull Context context) {
         return (App) application;
     }
-
 
     @Override
     public void onCreate() {
@@ -22,5 +22,13 @@ public class App extends Application {
 
     private void init() {
         application = this;
+        component = DaggerAppComponent
+                .builder()
+                .appModule(new AppModule())
+                .build();
+    }
+
+    public static AppComponent component() {
+        return application.component;
     }
 }
