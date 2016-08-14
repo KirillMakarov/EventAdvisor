@@ -28,7 +28,8 @@ public abstract class FragmentBase extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        unbinder = ButterKnife.bind(view);
+        unbinder = ButterKnife.bind(this, view);
+        Timber.i("onViewCreated %s", this.toString());
     }
 
     @Override
