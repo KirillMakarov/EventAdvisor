@@ -3,6 +3,7 @@ package com.elpatika.eventadvisor.model;
 import java.util.List;
 
 public class Event {
+
     private long id;
     private String title;
     private String slug;
@@ -11,13 +12,20 @@ public class Event {
     private Location location;
     private boolean is_free;
     private List<Image> images;
+    private String _title = null;
 
     public long getId() {
         return id;
     }
 
     public String getTitle() {
-        return title;
+        if (_title == null) {
+            if (title == null || title.isEmpty()) {
+                return "";
+            }
+            _title = Character.toUpperCase(title.charAt(0)) + title.substring(1);
+        }
+        return _title;
     }
 
     public String getSlug() {
