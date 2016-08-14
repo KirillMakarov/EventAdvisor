@@ -1,5 +1,9 @@
 package com.elpatika.eventadvisor.ui.activities;
 
+import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,5 +42,16 @@ public class BaseActivity extends AppCompatActivity {
             unbinder.unbind();
         }
         super.onDestroy();
+    }
+
+    protected void setFragment(@IdRes int res, Fragment fragment, String tag, boolean addToBackStack) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(res, fragment, tag);
+        if (addToBackStack) {
+            fragmentTransaction.addToBackStack(tag);
+        }
+        fragmentTransaction.commit();
     }
 }

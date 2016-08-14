@@ -2,15 +2,22 @@ package com.elpatika.eventadvisor.ui.activities;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Toast;
 
 import com.elpatika.eventadvisor.R;
+import com.elpatika.eventadvisor.ui.fragments.FeedFragment;
+import com.elpatika.eventadvisor.ui.fragments.ScheduleFragment;
+import com.elpatika.eventadvisor.ui.fragments.SettingsFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity {
 
@@ -27,23 +34,46 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        bottomBar = BottomBar.attachShy((CoordinatorLayout) coordinatorLayout, scrollingContent, savedInstanceState);
+//        if (savedInstanceState == null) {
+//            setFragment(R.id.frame, FeedFragment.newInstance(), FeedFragment.TAG);
+//        }
+        bottomBar = BottomBar.attachShy(coordinatorLayout, scrollingContent, savedInstanceState);
         bottomBar.setItems(R.menu.main_menu);
         bottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
+                Fragment existingFragment = null;
+                Timber.i("tab selected");
                 switch (menuItemId) {
                     case R.id.main_menu_feed:
-                        Toast.makeText(getApplicationContext(), "Hello, CLICK MAIN", Toast.LENGTH_SHORT).show();
+                        existingFragment = findFragment(FeedFragment.TAG);
+                        if (existingFragment == null) {
+                            existingFragment = FeedFragment.newInstance();
+                            setFragment(R.id.frame, existingFragment, FeedFragment.TAG, true);
+                        } else {
+                            setFragment(R.id.frame, existingFragment, FeedFragment.TAG, false);
+                        }
+
                         break;
                     case R.id.main_menu_schedule:
-                        Toast.makeText(getApplicationContext(), "Hello, CLICK SCHEDULE", Toast.LENGTH_SHORT).show();
+                        existingFragment = findFragment(ScheduleFragment.TAG);
+                        if (existingFragment == null) {
+                            existingFragment = ScheduleFragment.newInstance();
+                            setFragment(R.id.frame, existingFragment, ScheduleFragment.TAG, true);
+                        } else {
+                            setFragment(R.id.frame, existingFragment, ScheduleFragment.TAG, false);
+                        }
+
                         break;
                     case R.id.main_menu_settings:
-                        Toast.makeText(getApplicationContext(), "Hello, CLICK SETTINGS", Toast.LENGTH_SHORT).show();
+                        existingFragment = findFragment(SettingsFragment.TAG);
+                        if (existingFragment == null) {
+                            existingFragment = SettingsFragment.newInstance();
+                            setFragment(R.id.frame, existingFragment, SettingsFragment.TAG, true);
+                        } else {
+                            setFragment(R.id.frame, existingFragment, SettingsFragment.TAG, false);
+                        }
                         break;
-
                 }
             }
 
@@ -66,8 +96,29 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentById(R.id.frame);
+        if (fragment == null || fragment.getTag().equals(FeedFragment.TAG)) {
+            finish();
+        } else {
+            bottomBar.selectTabAtPosition(0, true);
+        }
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         bottomBar.onSaveInstanceState(outState);
+    }
+
+    @Nullable
+    private Fragment findFragment(String Tag) {
+        return getSupportFragmentManager().findFragmentByTag(Tag);
     }
 }
