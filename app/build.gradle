@@ -62,6 +62,7 @@ dependencies {
 
     compile 'com.roughike:bottom-bar:1.4.0.1'
 
+    compile 'com.jakewharton.timber:timber:4.2.0'
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

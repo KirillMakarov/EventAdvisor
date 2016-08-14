@@ -4,6 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.elpatika.eventadvisor.BuildConfig;
+
+import timber.log.Timber;
+
 public class App extends Application {
 
     private static App application;
@@ -26,6 +30,10 @@ public class App extends Application {
                 .builder()
                 .appModule(new AppModule())
                 .build();
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 
     public static AppComponent component() {
