@@ -57,7 +57,7 @@ public class EventFeedPresenter extends PresenterBase<EventFeedView> {
     @Override
     public void detachView(@NonNull EventFeedView view) {
         super.detachView(view);
-        if (apiSubscription != null) {
+        if (apiSubscription != null && !apiSubscription.isUnsubscribed()) {
             apiSubscription.unsubscribe();
         }
     }
