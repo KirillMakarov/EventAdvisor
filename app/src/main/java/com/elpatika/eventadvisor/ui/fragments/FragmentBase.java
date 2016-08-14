@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.elpatika.eventadvisor.core.App;
+import com.elpatika.eventadvisor.web.Api;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -14,6 +17,9 @@ import timber.log.Timber;
 public abstract class FragmentBase extends Fragment {
 
     protected Unbinder unbinder;
+
+    @Inject
+    Api api;
 
     FragmentBase() {
         initDependencies(); // persistent to config changes.
