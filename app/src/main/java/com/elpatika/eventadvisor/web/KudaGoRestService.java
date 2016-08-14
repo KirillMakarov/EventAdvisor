@@ -11,7 +11,7 @@ import rx.Observable;
 
 public interface KudaGoRestService {
 
-    @GET("{version}/events/?location=msk&fields=location,title,id,slug,description,is_free,body_text,images&expand=location,images")
+    @GET("{version}/events/?location=msk&fields=location,title,id,slug,description,is_free,body_text,images&expand=location,images&page_size=100")
     Observable<EventsResponse> getEvents(@Path("version") String version,
                                          @Query("locationType") LocationType locationType);
 }
