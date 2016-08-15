@@ -4,14 +4,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.elpatika.eventadvisor.R;
-import com.elpatika.eventadvisor.core.App;
 import com.elpatika.eventadvisor.model.Event;
+import com.elpatika.eventadvisor.model.Thumbnails;
 import com.elpatika.eventadvisor.ui.presenters.EventFeedPresenter;
-import com.squareup.picasso.Picasso;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.DraweeView;
+import com.facebook.imagepipeline.request.ImageRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,7 +48,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         TextView eventTitle;
 
         @BindView(R.id.event_image)
-        ImageView eventImage;
+        DraweeView eventImage;
 
         EventViewHolder(View itemView) {
             super(itemView);
@@ -55,10 +57,15 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
         void setData(Event event) {
             eventTitle.setText(event.getTitle());
-            Picasso.with(App.get())
-                    .load(event.getImages().get(0).getThumbnails().getLarge())
-//                    .placeholder()
-                    .into(eventImage);
+            Thumbnails thumbnails = event.getImages().get(0).getThumbnails();
+            String large = thumbnails.getLarge();
+            String small = thumbnails.getSmall();
+
+            DraweeController controller = Fresco.newDraweeControllerBuilder()
+                    .setLowResImageRequest(ImageRequest.fromUri(small))
+                    .setImageRequest(ImageRequest.fromUri(large))
+                    .build();
+            eventImage.setController(controller);
         }
     }
 }
