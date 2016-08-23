@@ -21,4 +21,9 @@ public class SettingsFragment extends FragmentBase {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_settings, container, false);
     }
+
+    @Override
+    public int getTitleRes() {
+        return R.string.settings_title;
+    }
 }

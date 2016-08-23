@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
@@ -29,11 +30,15 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.frame)
     View frame;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initToolbar();
 
         bottomBar = BottomBar.attachShy(coordinatorLayout, frame, savedInstanceState);
         bottomBar.setItems(R.menu.main_menu);
@@ -91,6 +96,10 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(toolbar);
     }
 
     @Override

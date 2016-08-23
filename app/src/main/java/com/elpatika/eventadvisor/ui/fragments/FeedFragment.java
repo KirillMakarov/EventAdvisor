@@ -49,7 +49,6 @@ public class FeedFragment extends FragmentBase implements EventFeedView {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         eventsAdapter = new EventsAdapter(eventFeedPresenter);
         recyclerView.setAdapter(eventsAdapter);
-        //// TODO: 14.08.16 restore state of recycler view after recreating view
 
         eventFeedPresenter.attachView(this);
         eventFeedPresenter.fetchData();
@@ -66,6 +65,11 @@ public class FeedFragment extends FragmentBase implements EventFeedView {
         App.component()
                 .plusFeedModule(new FeedModule())
                 .inject(this);
+    }
+
+    @Override
+    public int getTitleRes() {
+        return R.string.feed_title;
     }
 
     @Override

@@ -21,6 +21,11 @@ public class ScheduleFragment extends FragmentBase {
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    public int getTitleRes() {
+        return R.string.schedule_title;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
