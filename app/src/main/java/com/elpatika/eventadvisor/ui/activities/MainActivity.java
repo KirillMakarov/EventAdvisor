@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity {
         initToolbar();
 
         bottomBar = BottomBar.attachShy(coordinatorLayout, frame, savedInstanceState);
+        bottomBar.noTabletGoodness(); // because with action bar side bar not working
         bottomBar.setItems(R.menu.main_menu);
         bottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
             @Override
