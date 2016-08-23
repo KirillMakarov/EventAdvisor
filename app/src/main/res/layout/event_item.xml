@@ -28,12 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/event_image"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="24dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+            style="@style/TextViewHeader"
             tools:text="The best event ever"/>
 
     </RelativeLayout>
