@@ -49,7 +49,6 @@ public class FeedFragment extends FragmentBase implements EventFeedView {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         eventsAdapter = new EventsAdapter(eventFeedPresenter);
         recyclerView.setAdapter(eventsAdapter);
-        recyclerView.setNestedScrollingEnabled(false);
         //// TODO: 14.08.16 restore state of recycler view after recreating view
 
         eventFeedPresenter.attachView(this);

@@ -26,18 +26,16 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.activity_main_coordinator)
     CoordinatorLayout coordinatorLayout;
 
-    @BindView(R.id.activity_main_scrolling_content)
-    View scrollingContent;
+    @BindView(R.id.frame)
+    View frame;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        if (savedInstanceState == null) {
-//            setFragment(R.id.frame, FeedFragment.newInstance(), FeedFragment.TAG);
-//        }
-        bottomBar = BottomBar.attachShy(coordinatorLayout, scrollingContent, savedInstanceState);
+
+        bottomBar = BottomBar.attachShy(coordinatorLayout, frame, savedInstanceState);
         bottomBar.setItems(R.menu.main_menu);
         bottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
             @Override
@@ -93,11 +91,6 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 
     @Override

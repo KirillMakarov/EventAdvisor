@@ -9,19 +9,15 @@
     tools:context="com.elpatika.eventadvisor.ui.activities.MainActivity">
 
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/activity_main_scrolling_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <FrameLayout
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         </FrameLayout>
 
-    </android.support.v4.widget.NestedScrollView>
 
 
 </android.support.design.widget.CoordinatorLayout>
