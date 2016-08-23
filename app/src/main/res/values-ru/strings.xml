@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feed_title">Лента</string>
+    <string name="schedule_title">Расписание</string>
+    <string name="settings_title">Настройки</string>
+</resources>
