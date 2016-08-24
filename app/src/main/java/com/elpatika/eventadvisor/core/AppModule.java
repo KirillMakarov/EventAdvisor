@@ -16,4 +16,10 @@ public class AppModule {
     Api provideApi() {
         return new ApiImpl();
     }
+
+    @Singleton
+    @Provides
+    IntentProvider provideIntentProvider() {
+        return new IntentProviderImpl();
+    }
 }
