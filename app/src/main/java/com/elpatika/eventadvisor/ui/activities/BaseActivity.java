@@ -5,13 +5,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     private Unbinder unbinder;
 
     @Override
@@ -53,5 +54,19 @@ public class BaseActivity extends AppCompatActivity {
             fragmentTransaction.addToBackStack(tag);
         }
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onUpNavigation();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void onUpNavigation() {
+        finish();//just back on UP by default
     }
 }

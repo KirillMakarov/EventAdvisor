@@ -47,7 +47,7 @@ public class FeedFragment extends FragmentBase implements EventFeedView {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        eventsAdapter = new EventsAdapter(eventFeedPresenter);
+        eventsAdapter = new EventsAdapter(eventFeedPresenter, getActivity());
         recyclerView.setAdapter(eventsAdapter);
 
         eventFeedPresenter.attachView(this);
@@ -57,6 +57,7 @@ public class FeedFragment extends FragmentBase implements EventFeedView {
     @Override
     public void onDestroyView() {
         eventFeedPresenter.detachView(this);
+        eventsAdapter = null;
         super.onDestroyView();
     }
 
@@ -68,8 +69,8 @@ public class FeedFragment extends FragmentBase implements EventFeedView {
     }
 
     @Override
-    public int getTitleRes() {
-        return R.string.feed_title;
+    public String getTitleString() {
+        return App.get().getString(R.string.feed_title);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.elpatika.eventadvisor.core;
 
+import com.elpatika.eventadvisor.ui.adapters.EventsAdapter;
 import com.elpatika.eventadvisor.ui.fragments.FragmentBase;
 
 import javax.inject.Singleton;
@@ -14,4 +15,6 @@ public interface AppComponent {
     FeedComponent plusFeedModule(FeedModule module);
 
     void inject(FragmentBase fragmentBase);
+
+    void inject(EventsAdapter eventsAdapter);
 }

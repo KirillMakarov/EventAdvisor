@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.elpatika.eventadvisor.R;
+import com.elpatika.eventadvisor.core.App;
 
 public class ScheduleFragment extends FragmentBase {
 
@@ -22,8 +23,8 @@ public class ScheduleFragment extends FragmentBase {
     }
 
     @Override
-    public int getTitleRes() {
-        return R.string.schedule_title;
+    public String getTitleString() {
+        return App.get().getString(R.string.schedule_title);
     }
 
     @Nullable

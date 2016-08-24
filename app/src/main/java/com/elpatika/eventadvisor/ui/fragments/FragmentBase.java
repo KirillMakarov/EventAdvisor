@@ -2,7 +2,6 @@ package com.elpatika.eventadvisor.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -30,8 +29,13 @@ public abstract class FragmentBase extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
-        setTitle(getTitleRes());
+        onInitToolbar();
+        setTitle(getTitleString());
         Timber.i("onViewCreated %s", this.toString());
+    }
+
+    public void onInitToolbar() {
+        //Stub for override
     }
 
     @Override
@@ -54,11 +58,10 @@ public abstract class FragmentBase extends Fragment {
         Timber.i("onCreate fragment %s", this.toString());
     }
 
-    private void setTitle(@StringRes int titleRes) {
-        getActivity().setTitle(titleRes);
+    private void setTitle(String title) {
+        getActivity().setTitle(title);
     }
 
-    @StringRes
-    public abstract int getTitleRes();
+    public abstract String getTitleString();
 
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.elpatika.eventadvisor.R;
+import com.elpatika.eventadvisor.core.App;
 
 public class SettingsFragment extends FragmentBase {
 
@@ -23,7 +24,7 @@ public class SettingsFragment extends FragmentBase {
     }
 
     @Override
-    public int getTitleRes() {
-        return R.string.settings_title;
+    public String getTitleString() {
+        return App.get().getString(R.string.settings_title);
     }
 }

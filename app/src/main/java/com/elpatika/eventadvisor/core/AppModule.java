@@ -19,7 +19,7 @@ public class AppModule {
 
     @Singleton
     @Provides
-    IntentProvider provideIntentProvider() {
-        return new IntentProviderImpl();
+    ScreenManager provideIntentProvider() {
+        return new ScreenManagerImpl();
     }
 }

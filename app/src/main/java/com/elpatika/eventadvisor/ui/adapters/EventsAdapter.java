@@ -1,5 +1,6 @@
 package com.elpatika.eventadvisor.ui.adapters;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.elpatika.eventadvisor.R;
+import com.elpatika.eventadvisor.core.App;
+import com.elpatika.eventadvisor.core.ScreenManager;
 import com.elpatika.eventadvisor.model.Event;
 import com.elpatika.eventadvisor.model.Thumbnails;
 import com.elpatika.eventadvisor.ui.presenters.EventFeedPresenter;
@@ -15,15 +18,26 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.DraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewHolder> {
 
     private EventFeedPresenter eventFeedPresenter;
+    private Activity activity;
 
-    public EventsAdapter(EventFeedPresenter eventFeedPresenter) {
+    @Inject
+    ScreenManager screenManager;
+
+    public EventsAdapter(EventFeedPresenter eventFeedPresenter, Activity activity) {
         this.eventFeedPresenter = eventFeedPresenter;
+        this.activity = activity;
+        App.component()
+                .inject(this); // only app module
     }
 
     @Override
@@ -43,7 +57,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     }
 
 
-    static class EventViewHolder extends RecyclerView.ViewHolder {
+    class EventViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.event_title)
         TextView eventTitle;
 
@@ -53,6 +67,17 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         EventViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int positionInList = getAdapterPosition();
+                    List<Event> eventList = EventsAdapter.this.eventFeedPresenter.getEventList();
+                    if (positionInList >= 0 && positionInList < eventList.size()) {
+                        Event event = eventList.get(positionInList);
+                        screenManager.showDetailActivityIntent(activity);
+                    }
+                }
+            });
         }
 
         void setData(Event event) {
