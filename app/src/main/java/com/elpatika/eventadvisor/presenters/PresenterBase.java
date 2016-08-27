@@ -1,4 +1,4 @@
-package com.elpatika.eventadvisor.ui.presenters;
+package com.elpatika.eventadvisor.presenters;
 
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;

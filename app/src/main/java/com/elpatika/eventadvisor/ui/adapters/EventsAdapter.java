@@ -12,7 +12,7 @@ import com.elpatika.eventadvisor.core.App;
 import com.elpatika.eventadvisor.core.ScreenManager;
 import com.elpatika.eventadvisor.model.Event;
 import com.elpatika.eventadvisor.model.Thumbnails;
-import com.elpatika.eventadvisor.ui.presenters.EventFeedPresenter;
+import com.elpatika.eventadvisor.presenters.EventFeedPresenter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.DraweeView;

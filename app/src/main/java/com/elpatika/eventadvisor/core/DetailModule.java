@@ -1,6 +1,6 @@
 package com.elpatika.eventadvisor.core;
 
-import com.elpatika.eventadvisor.ui.presenters.DetailEventPresenter;
+import com.elpatika.eventadvisor.presenters.DetailEventPresenter;
 
 import dagger.Module;
 import dagger.Provides;

@@ -13,8 +13,8 @@ import com.elpatika.eventadvisor.R;
 import com.elpatika.eventadvisor.core.App;
 import com.elpatika.eventadvisor.core.DetailModule;
 import com.elpatika.eventadvisor.model.Event;
-import com.elpatika.eventadvisor.ui.presenters.DetailEventPresenter;
-import com.elpatika.eventadvisor.ui.views.DetailEventView;
+import com.elpatika.eventadvisor.presenters.DetailEventPresenter;
+import com.elpatika.eventadvisor.presenters.views.DetailEventView;
 
 import javax.inject.Inject;
 

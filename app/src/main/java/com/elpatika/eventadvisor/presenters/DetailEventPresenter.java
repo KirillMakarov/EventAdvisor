@@ -1,11 +1,11 @@
-package com.elpatika.eventadvisor.ui.presenters;
+package com.elpatika.eventadvisor.presenters;
 
 import android.support.annotation.NonNull;
 
 import com.elpatika.eventadvisor.R;
 import com.elpatika.eventadvisor.core.App;
 import com.elpatika.eventadvisor.model.Event;
-import com.elpatika.eventadvisor.ui.views.DetailEventView;
+import com.elpatika.eventadvisor.presenters.views.DetailEventView;
 
 public class DetailEventPresenter extends PresenterBase<DetailEventView> {
     private Event event;

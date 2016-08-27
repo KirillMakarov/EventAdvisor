@@ -1,4 +1,4 @@
-package com.elpatika.eventadvisor.ui.views;
+package com.elpatika.eventadvisor.presenters.views;
 
 public interface DetailEventView {
     void setEventTitle(String title);

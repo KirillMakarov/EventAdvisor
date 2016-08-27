@@ -1,9 +1,9 @@
-package com.elpatika.eventadvisor.ui.presenters;
+package com.elpatika.eventadvisor.presenters;
 
 import android.support.annotation.NonNull;
 
 import com.elpatika.eventadvisor.model.Event;
-import com.elpatika.eventadvisor.ui.views.EventFeedView;
+import com.elpatika.eventadvisor.presenters.views.EventFeedView;
 import com.elpatika.eventadvisor.web.Api;
 
 import java.util.ArrayList;
