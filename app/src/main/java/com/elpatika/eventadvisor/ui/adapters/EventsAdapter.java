@@ -74,7 +74,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
                     List<Event> eventList = EventsAdapter.this.eventFeedPresenter.getEventList();
                     if (positionInList >= 0 && positionInList < eventList.size()) {
                         Event event = eventList.get(positionInList);
-                        screenManager.showDetailActivityIntent(activity);
+                        screenManager.showDetailActivityIntent(activity, event);
                     }
                 }
             });

@@ -3,4 +3,5 @@
     <string name="feed_title">Лента</string>
     <string name="schedule_title">Расписание</string>
     <string name="settings_title">Настройки</string>
+    <string name="default_event_title">Событие</string>
 </resources>

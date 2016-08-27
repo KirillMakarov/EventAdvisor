@@ -3,4 +3,5 @@
     <string name="feed_title">Feed</string>
     <string name="schedule_title">Schedule</string>
     <string name="settings_title">Settings</string>
+    <string name="default_event_title">Event</string>
 </resources>

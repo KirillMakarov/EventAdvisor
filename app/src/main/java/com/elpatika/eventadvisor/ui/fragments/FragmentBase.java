@@ -58,7 +58,7 @@ public abstract class FragmentBase extends Fragment {
         Timber.i("onCreate fragment %s", this.toString());
     }
 
-    private void setTitle(String title) {
+    protected void setTitle(String title) {
         getActivity().setTitle(title);
     }
 

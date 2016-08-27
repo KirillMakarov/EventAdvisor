@@ -14,6 +14,8 @@ public interface AppComponent {
 
     FeedComponent plusFeedModule(FeedModule module);
 
+    DetailComponent plusDetailModule(DetailModule module);
+
     void inject(FragmentBase fragmentBase);
 
     void inject(EventsAdapter eventsAdapter);
